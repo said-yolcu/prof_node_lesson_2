@@ -18,3 +18,4 @@ exec('cat *.js | wc -l', options,  (err, stdout, stderr) => {
 })
 
 //aga
+// some comment
