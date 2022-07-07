@@ -27,9 +27,12 @@ var print_out= setInterval(() => {
 setTimeout(() => {
     clearInterval(print_out)
     // Alt 1 => process.exit(0)
-    child.kill()
+    child.kill('SIGUSR2')
     //process.exit()
 }, 3500)
+
+// process on signal does not work
+child.on('SIGUSR2', () => console.log('Got a sigusr2 signal'))
 
 // Alt 1 => process.on(exit, ...)
 child.on('exit', (code, signal) => {
@@ -40,5 +43,7 @@ child.on('exit', (code, signal) => {
     }
     
 })
+
+
 
 // Alt 1 
